@@ -1,0 +1,6 @@
+<h2 class="heading heading--section heading--first">相关分类</h2>
+<ul class="list list--marker">
+    {volist name="brother" id="row"}
+    <li class="list__item"><a class="list__link" href="{:url('index/category',['id'=>$row['category_id']])}">{$row.category_name}</a></li>
+    {/volist}
+</ul>

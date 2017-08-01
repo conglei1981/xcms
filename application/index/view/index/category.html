@@ -1,0 +1,23 @@
+{extend name="layout/wenku"}
+{block name="bread"}
+<!-- Breadcrumb pattern -->
+{:widget('category/bread')}
+{/block}
+{block name="mainLeft"}
+{volist name="lists" id="row"}
+<article class="post post--preview">
+    <p class="post__date post__date--rect post__date--static">{$row.ctime|date="Y-m-d",###}</p>
+    <a class="post--preview__link" href="{:url('index/content',['id'=>$row['id']])}">
+        <h2 class="post-heading"><img width="30"  src="/static/article/images/{$row.cover|trim}.png" alt="" />{$row.title}</h2>
+    </a>
+    <p>{$row.description}</p>
+</article> <!-- end article -->
+{/volist}
+<!-- Rectangle shapes -->
+{$page}
+
+{/block}
+
+{block name="mainRight"}
+{:widget("category/brother",$Think.get.id)}
+{/block}

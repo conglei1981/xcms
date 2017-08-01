@@ -1,0 +1,8 @@
+
+    <h2 class="heading heading--section heading--first">相关推荐文档</h2>
+        {volist name="relative" id="row"}
+    <div class="news news--forum">
+        <a class="news__heading" href="{:url('index/content',['id'=>$row['id']])}">{$row.title}</a>
+        <p class="news__detail">{$row.description|mb_substr=###,0,30}</p>
+    </div>
+        {/volist}

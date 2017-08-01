@@ -1,0 +1,41 @@
+{extend name="layout/wenku" /}
+{block name="title"}
+{$document.title}
+{/block}
+{block name="keywords"}
+{$document.keywords}
+{/block}
+
+{block name="desc"}
+{$document.description}
+{/block}
+
+{block name="bread"}
+<!-- Breadcrumb pattern -->
+{:widget('category/bread',$document['category_id'])}
+{/block}
+{block name="heading"}
+文档正文
+{/block}
+
+{block name="mainLeft"}
+<div class="post">
+    <h1 class="post-heading">{$document.title}</h1>
+    <ul class="tags post__tags">
+        <li class="tags__item tags__item--user"><a href="#" class="tags__link">来自网络</a></li>
+    </ul>
+    {$wenku.post}
+</div><!-- end post -->
+{/block}
+
+{block name="mainRight"}
+{:widget("category/brother",$document.category_id)}
+{:widget("wenku/relative",$document.sign)}
+{/block}
+
+{block name="jsappend"}
+<script src="/static/article/js/jquery.lazyload.min.js"></script>
+{/block}
+{block name="onready"}
+$("img.lazy").lazyload({effect: "fadeIn"});
+{/block}

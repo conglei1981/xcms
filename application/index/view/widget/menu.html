@@ -1,0 +1,36 @@
+<nav class="z-nav">
+    <!-- Toggle for menu mobile view -->
+    <a href="#" class="z-nav__toggle">
+        <span class="menu-icon"></span>
+        <span class="menu-text">导航</span>
+        <div class="menu-head"></div>
+    </a>
+
+    <div class="z-nav-inner">
+        <ul class="z-nav__list">
+
+            <li class="z-nav__item">
+                <!-- Subsidiary menu toogle button -->
+                <span class="z-nav__toggle-sub plus"><i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
+                <a class="z-nav__link" href="/">首页</a>
+            </li>
+            {volist name="menu"  id="vo"}
+            <li class="z-nav__item">
+                <!-- Subsidiary menu toogle button -->
+                <span class="z-nav__toggle-sub plus"><i class="fa fa-plus"></i><i class="fa fa-minus"></i></span>
+                <a class="z-nav__link z-nav__link--active" href="#">{$vo.category_name}</a>
+                <!-- Subsidiary menu list-->
+                {if condition="isset($vo['children']) && $vo['children']"}
+                <ul class="z-nav__list-secondary">
+                    {volist name="vo['children']" id="cl"}
+                    <li class="z-nav__item"><a class="z-nav__link" href="{:url('index/category',['id'=>$cl['category_id']])}">{$cl.category_name}</a></li>
+                    {/volist}
+                </ul>
+                {/if}
+                <!-- end subsidiary menu list-->
+            </li>
+            {/volist}
+        </ul>
+    </div><!-- end list menu inner container -->
+    <!-- end list menu item -->
+</nav>
